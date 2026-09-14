@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BetShahn - اختيار طريقة الشحن والدفع</title>
+    <title>BetShahn - صفحة الشحن</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for icons -->
@@ -47,92 +47,35 @@
             background-color: #20ba5a;
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
-        /* Scroll to Top Button */
-        .scroll-top-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background-color: #ef4444;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 20px;
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease-in-out;
-            cursor: pointer;
-            border: none;
-        }
-        .scroll-top-btn.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .scroll-top-btn:hover {
-            transform: scale(1.1);
-            background-color: #dc2626;
-        }
-        /* Loading Screen Style */
-        #loader {
-            position: fixed;
-            inset: 0;
-            background-color: #ffffff;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #e5e7eb;
-            border-top: 5px solid #2563eb;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        /* Smooth Infinite Slider Container */
+        /* Scrollable Slider Container with touch support */
         .slider-container {
-            overflow: hidden;
+            overflow-x: auto;
             width: 100%;
             position: relative;
-            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+        .slider-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .slider-container::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 10px;
         }
         .slider-track {
             display: flex;
             width: max-content;
             gap: 16px;
-            will-change: transform;
+            padding-bottom: 8px;
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- Loading Screen -->
-    <div id="loader">
-        <div class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-4">
-            BETSHAHN<span class="text-xs text-orange-500 font-normal ml-1">.COM</span>
-        </div>
-        <div class="spinner mb-4"></div>
-        <p class="text-sm font-bold text-gray-500 animate-pulse">جاري تحميل خيارات الشحن...</p>
-    </div>
-
     <!-- Header / Navbar -->
     <header class="w-full bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200 shadow-sm">
         <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Back Button to Home -->
-            <a href="index.html" class="text-gray-700 font-bold text-sm bg-gray-100 hover:bg-gray-200 py-1.5 px-3 rounded-xl transition flex items-center gap-2">
+            <a href="index.html" class="text-gray-700 font-bold text-sm bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-xl transition flex items-center gap-1">
                 <i class="fa-solid fa-arrow-right"></i>
                 <span>الرئيسية</span>
             </a>
@@ -146,7 +89,7 @@
     <!-- Main Content Container -->
     <main class="w-full max-w-4xl mx-auto px-4 py-6 flex-grow space-y-6">
 
-        <!-- Top Banner Title -->
+        <!-- Top Banner Section -->
         <section class="hero-gradient rounded-3xl p-6 text-center shadow-xl relative overflow-hidden text-white">
             <div class="absolute -top-12 -right-12 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
             <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-blue-400/20 rounded-full blur-3xl"></div>
@@ -155,89 +98,67 @@
                 <span class="inline-block bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3 shadow-md">
                     قسم الشحن الفوري
                 </span>
-                <h1 class="text-lg md:text-2xl font-black leading-relaxed text-white">
-                    اختر طريقة الدفع الخاصة بك وقم بتعبئة حساب <span class="text-amber-300">1XBET</span> أو <span class="text-amber-300">MELBET</span> الخاص بك بسرعة وسهولة مع الوكيل المعتمد <span class="text-white underline">BETSHAHN</span>
+                <h1 class="text-lg md:text-xl font-black leading-relaxed text-white">
+                    اختر طريقة الدفع الخاصة بك وقم بتعبئة حساب <span class="text-amber-300">1XBET</span> أو <span class="text-amber-300">MELBET</span> الخاص بك بسرعة وسهولة مع الوكيل المعتمد <span class="text-amber-300">BETSHAHN</span>
                 </h1>
             </div>
         </section>
 
-        <!-- Payment Methods & Banks Auto-Scrolling Slider Section -->
-        <section class="custom-card rounded-3xl p-6 shadow-md overflow-hidden">
+        <!-- Payment Methods Selection Section -->
+        <section class="custom-card rounded-3xl p-6 shadow-md">
             <h2 class="text-base md:text-lg font-bold text-center mb-6 text-gray-800 leading-relaxed">
                 اضغط على أي بنك أو وسيلة دفع أدناه للتواصل الفوري وإتمام الشحن عبر الواتساب:
             </h2>
 
-            <!-- Auto-Scrolling Slider with Touch/Hold to Pause -->
-            <div class="slider-container mb-2 py-3" id="autoSlider">
-                <div class="slider-track" id="sliderTrack">
-                    <!-- Original Set of Images -->
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/qYcqmv4S/IMG-8117.jpg" alt="طريقة الدفع 1" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+            <!-- Manually Scrollable Slider Container -->
+            <div class="slider-container mb-6 py-2">
+                <div class="slider-track" id="paymentMethodsTrack">
+                    <!-- Orange & Inwi -->
+                    <a                     <a href="https://wa.me/+212788367500?text=سلام، بغيت نشحن عبر حسابي بنكي"  إنوي" target="_blank" class="w-28 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:shadow-md transition">
+                        <img src="https://i.ibb.co/qYcqmv4S/IMG-8117.jpg" alt="Orange Inwi" class="w-20 h-14 object-contain pointer-events-none">
                     </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر انوي أو اورنج" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/BKzJBnVR/IMG-8116.jpg" alt="طريقة الدفع 2" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    <!-- Attijariwafa Bank -->
+                    <a href="https://wa.me/+212788367500?text=سلام، بغيت نشحن عبر حسابي بنكي" target="_blank" class="w-28 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:shadow-md transition">
+                        <img src="https://i.ibb.co/BKzJBnVR/IMG-8116.jpg" alt="Attijariwafa" class="w-20 h-14 object-contain pointer-events-none">
                     </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/Nd4PXmhD/IMG-8118.jpg" alt="طريقة الدفع 3" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    <!-- Bank 3 (CIH) -->
+                    <a href="https://wa.me/+212788367500?text=سلام، بغيت نشحن عبر أورونج أو إنوي" target="_blank" class="w-28 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:shadow-md transition">
+                        <img src="https://i.ibb.co/Nd4PXmhD/IMG-8118.jpg" alt="Bank 3" class="w-20 h-14 object-contain pointer-events-none">
                     </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/v4tCxtPP/IMG-8120.jpg" alt="طريقة الدفع 4" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    <!-- Bank 4 -->
+                    <a href="https://wa.me/+212788367500?text=سلام، بغيت نشحن عبر حسابي بنكي" target="_blank" class="w-28 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:shadow-md transition">
+                        <img src="https://i.ibb.co/v4tCxtPP/IMG-8120.jpg" alt="Bank 4" class="w-20 h-14 object-contain pointer-events-none">
                     </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/6RT2tQBT/IMG-8124.jpg" alt="طريقة الدفع 5" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    <!-- Bank 5 -->
+                    <a href="https://wa.me/+212788367500?text=سلام، بغيت نشحن عبر حسابي بنكي" target="_blank" class="w-28 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:shadow-md transition">
+                        <img src="https://i.ibb.co/6RT2tQBT/IMG-8124.jpg" alt="Bank 5" class="w-20 h-14 object-contain pointer-events-none">
                     </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/ymWWZLwv/IMG-8123.jpg" alt="طريقة الدفع 6" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    <!-- Bank 6 -->
+                    <a href="https://wa.me/+212788367500?text=سلام، بغيت نشحن عبر حسابي بنكي" target="_blank" class="w-28 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:shadow-md transition">
+                        <img src="https://i.ibb.co/ymWWZLwv/IMG-8123.jpg" alt="Bank 6" class="w-20 h-14 object-contain pointer-events-none">
                     </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/MxcB0frg/IMG-8122.jpg" alt="طريقة الدفع 7" class="w-full h-full object-contain pointer-events-none" loading="lazy">
-                    </a>
-
-                    <!-- Duplicate Set for Seamless Infinite Loop -->
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/qYcqmv4S/IMG-8117.jpg" alt="طريقة الدفع 1" class="w-full h-full object-contain pointer-events-none" loading="lazy">
-                    </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر انوي أو اورنج" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/BKzJBnVR/IMG-8116.jpg" alt="طريقة الدفع 2" class="w-full h-full object-contain pointer-events-none" loading="lazy">
-                    </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/Nd4PXmhD/IMG-8118.jpg" alt="طريقة الدفع 3" class="w-full h-full object-contain pointer-events-none" loading="lazy">
-                    </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/v4tCxtPP/IMG-8120.jpg" alt="طريقة الدفع 4" class="w-full h-full object-contain pointer-events-none" loading="lazy">
-                    </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/6RT2tQBT/IMG-8124.jpg" alt="طريقة الدفع 5" class="w-full h-full object-contain pointer-events-none" loading="lazy">
-                    </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/ymWWZLwv/IMG-8123.jpg" alt="طريقة الدفع 6" class="w-full h-full object-contain pointer-events-none" loading="lazy">
-                    </a>
-                    <a href="https://wa.me/+212788367500?text=سلام بغيت نشحن عبر البنك" target="_blank" class="w-36 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:scale-105 transition">
-                        <img src="https://i.ibb.co/MxcB0frg/IMG-8122.jpg" alt="طريقة الدفع 7" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    <!-- Bank 7 -->
+                    <a href="https://wa.me/+212788367500?text=سلام، بغيت نشحن عبر حسابي بنكي" target="_blank" class="w-28 h-20 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 hover:shadow-md transition">
+                        <img src="https://i.ibb.co/MxcB0frg/IMG-8122.jpg" alt="Bank 7" class="w-20 h-14 object-contain pointer-events-none">
                     </a>
                 </div>
             </div>
-        </section>
 
-        <!-- Direct WhatsApp Action Button -->
-        <div class="text-center py-4">
-            <a href="https://wa.me/+212788367500?text=slm" target="_blank" class="inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-8 rounded-2xl shadow-lg transition transform hover:scale-105 text-base">
-                <i class="fa-brands fa-whatsapp text-2xl"></i>
-                <span>تواصل مباشر مع الدعم للشحن</span>
-            </a>
-        </div>
+            <!-- Direct Support Button -->
+            <div class="text-center mt-6">
+                <a href="https://wa.me/+212788367500?text=سلام" target="_blank" class="inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg transition transform hover:scale-105 text-sm md:text-base">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>تواصل مباشر مع الدعم للشحن</span>
+                </a>
+            </div>
+        </section>
 
     </main>
 
     <!-- Floating WhatsApp Button (Left side) -->
-    <a href="https://wa.me/+212788367500?text=slm" class="whatsapp-float" target="_blank" aria-label="تواصل عبر الواتساب">
+    <a href="https://wa.me/+212788367500?text=سلام" class="whatsapp-float" target="_blank" aria-label="تواصل عبر الواتساب">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
-
-    <!-- Scroll to Top Button (Right side, appears on scroll) -->
-    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="الرجوع إلى أعلى الصفحة">
-        <i class="fa-solid fa-chevron-up"></i>
-    </button>
 
     <!-- Footer -->
     <footer class="w-full bg-white border-t border-gray-200 py-4 mt-8">
@@ -246,61 +167,5 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script>
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loader');
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                loader.style.visibility = 'hidden';
-            }, 600);
-
-            // Infinite Scroll Logic with Pause on Touch / Mouse Enter
-            const track = document.getElementById('sliderTrack');
-            let scrollPos = 0;
-            let isPaused = false;
-            const speed = 0.8;
-
-            function step() {
-                if (!isPaused) {
-                    scrollPos += speed;
-                    const halfWidth = track.scrollWidth / 2;
-                    if (scrollPos >= halfWidth) {
-                        scrollPos = 0;
-                    }
-                    track.style.transform = `translateX(${scrollPos}px)`;
-                }
-                requestAnimationFrame(step);
-            }
-
-            const sliderContainer = document.getElementById('autoSlider');
-            
-            sliderContainer.addEventListener('mouseenter', () => { isPaused = true; });
-            sliderContainer.addEventListener('mouseleave', () => { isPaused = false; });
-            
-            sliderContainer.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
-            sliderContainer.addEventListener('touchend', () => { isPaused = false; });
-
-            requestAnimationFrame(step);
-        });
-
-        // Scroll to Top Button Logic
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollTopBtn.classList.add('show');
-            } else {
-                scrollTopBtn.classList.remove('show');
-            }
-        });
-
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
 </body>
 </html>
