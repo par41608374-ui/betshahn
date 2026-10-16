@@ -2,1236 +2,454 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BetShahn | المنصة الأولى لشحن وسحب حسابات المراهنات في المغرب</title>
-    <meta name="description" content="منصة BetShahn الشحن والسحب الفوري المعتمد لجميع المنصات العالمية 1XBET, MELBET, LINEBET, GOOOBET, MEGAPARI, BETWINNER بسرعة وأمان.">
-    
-    <!-- FontAwesome & Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetShahn -  | الشحن و السحب من 1xbet و Melbet</title>
+    <meta name="description" content=" الشحن و السحب من 1xbet و Melbet، الإيداع بواسطة تعبئة الشحن بواسطة اينوي و اورونج . الشحن . السحب. اختر طريقة الدفع الخاصة بك وقم بتعبئة حساب 1XBET أو MELBET الخاص بك بسرعة وسهولة مع الوكيل المعتمد BETSHAHN">
+    <meta name="keywords" content="شحن 1xbet, سحب 1xbet, Melbet, شحن Melbet, الوكيل المعتمد, betshahn ">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/C3vFLtmS/DE11-B109-FCD2-4163-80-FD-4-DB8-EA7-D21-F9.png">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/C3vFLtmS/DE11-B109-FCD2-4163-80-FD-4-DB8-EA7-D21-F9.png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
-    
     <style>
-        :root {
-            --bg-main: #f1f5f9;
-            --card-bg: #ffffff;
-            --primary-blue: #2563eb;
-            --dark-blue: #1d4ed8;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --error-red: #ef4444;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
         body {
-            background-color: var(--bg-main);
-            color: var(--text-dark);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-        }
-
-        /* تنبيه هيدر */
-        #customAlert {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-150%);
-            width: 90%;
-            max-width: 400px;
-            background: linear-gradient(135deg, #1e3a8a, #2563eb);
-            color: #fff;
-            padding: 14px 18px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 10000;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 13px;
-            font-weight: 700;
-        }
-        #customAlert.show {
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .app-container {
-            width: 100vw;
-            height: 100vh;
-            background: var(--bg-main);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .app-scroll {
-            overflow-y: auto;
-            padding: 0 16px 95px 16px;
-            flex: 1;
-            width: 100%;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-        .app-scroll::-webkit-scrollbar {
-            width: 4px;
-        }
-        .app-scroll::-webkit-scrollbar-thumb {
-            background: var(--primary-blue);
-            border-radius: 10px;
-        }
-
-        /* الهيدر الاحترافي */
-        .pro-hero-header {
-            position: relative;
-            width: 100%;
-            padding: 16px;
-            background: #ffffff;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-        }
-
-        .store-top-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 480px;
-        }
-
-        .store-brand-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hero-avatar-wrapper {
-            position: relative;
-            width: 44px;
-            height: 44px;
-            flex-shrink: 0;
-        }
-
-        .hero-avatar-wrapper img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary-blue);
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
-        }
-
-        .hero-title-area {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-align: right;
-        }
-
-        .hero-title {
-            font-size: 17px;
-            font-weight: 900;
-            color: var(--text-dark);
-            letter-spacing: 0.8px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .hero-verified-icon {
-            width: 16px;
-            height: 16px;
-            fill: var(--primary-blue);
-        }
-
-        .hero-subtitle-badge {
-            background: #eff6ff;
-            color: var(--primary-blue);
-            border: 1px solid #bfdbfe;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 4px 10px;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        /* شبكة المنصات */
-        .section-title {
-            width: 100%;
-            text-align: right;
-            font-size: 14px;
-            font-weight: 800;
-            margin-bottom: 14px;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .section-title span {
-            font-size: 11px;
-            color: var(--primary-blue);
-            font-weight: 700;
-        }
-
-        .platform-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 22px;
-            width: 100%;
-        }
-
-        .platform-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .icon-box {
-            width: 100%;
-            aspect-ratio: 1/1;
-            max-width: 85px;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-
-        .platform-item input {
-            display: none;
-        }
-
-        .platform-item:has(input:checked) .icon-box {
-            border-color: var(--primary-blue);
-            transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
-            background: #ffffff;
-        }
-
-        .icon-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-            pointer-events: none;
-        }
-
-        .platform-name {
-            font-size: 10.5px;
-            font-weight: 800;
-            margin-top: 8px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-family: 'Poppins', sans-serif;
-            transition: 0.2s;
-        }
-
-        .platform-item:has(input:checked) .platform-name {
-            color: var(--primary-blue);
-        }
-
-        /* إدخال ID الحساب */
-        .id-input-wrapper {
-            position: relative;
-            margin-bottom: 18px;
-        }
-
-        .id-input {
-            width: 100%;
-            padding: 16px 20px;
-            border-radius: 18px;
-            border: 2px solid var(--border-color);
-            background: var(--card-bg);
-            font-size: 15px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            color: var(--text-dark);
-            outline: none;
-            transition: 0.3s;
-            text-align: left;
-            -webkit-user-select: text;
-            user-select: text;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-        }
-
-        .id-input::placeholder {
-            color: #94a3b8;
             font-family: 'Cairo', sans-serif;
-            font-size: 13px;
+            background-color: #ffffff;
+            color: #1f2937;
+            scroll-behavior: smooth;
         }
-
-        .id-input:focus {
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
+        .hero-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
         }
-
-        .btn-continue {
-            width: 100%;
-            padding: 16px;
-            background: var(--primary-blue);
-            border: none;
-            border-radius: 18px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 25px;
-            transition: all 0.3s;
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
-        }
-
-        .btn-continue:hover {
-            background: var(--dark-blue);
-        }
-
-        .btn-continue:active {
-            transform: scale(0.98);
-        }
-
-        .btn-continue span {
-            font-size: 15px;
-            font-weight: 800;
-            color: #ffffff;
-        }
-
-        /* العناوين الكبيرة */
-        .section-label-blue {
-            font-size: 13px;
-            color: var(--primary-blue);
-            font-weight: 900;
-            text-align: right;
-            margin: 25px 0 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .info-card-premium {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 16px 18px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-        }
-
-        .info-card-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            color: var(--primary-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .info-content {
-            text-align: right;
-            flex: 1;
-        }
-
-        .info-content h5 {
-            margin: 0;
-            font-size: 14px;
-            font-weight: 800;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .info-content p {
-            margin: 3px 0 0;
-            font-size: 11px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* تصميم كارت الدعم */
-        .support-card-custom {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 18px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            margin-top: 10px;
-        }
-
-        .support-card-custom:hover {
-            border-color: var(--primary-blue);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.1);
-        }
-
-        .support-info-text {
-            text-align: right;
-        }
-
-        .support-info-text h3 {
-            font-size: 17px;
-            font-weight: 900;
-            color: #1e3a8a;
-            margin-bottom: 2px;
-        }
-
-        .support-info-text p {
-            font-size: 12px;
-            color: #64748b;
-            font-weight: 600;
-        }
-
-        .support-headset-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #eff6ff;
-            color: var(--primary-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            flex-shrink: 0;
-        }
-
-        /* ستايل الشات المطور */
-        .whatsapp-chat-box {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            border-radius: 22px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: calc(100vh - 175px);
-            min-height: 420px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-        }
-
-        .wa-chat-header {
-            background: #1e3a8a;
-            color: #ffffff;
-            padding: 14px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .wa-chat-body {
-            flex: 1;
-            padding: 16px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .bot-message-container {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            max-width: 92%;
-            align-self: flex-start;
-        }
-
-        .bot-tag-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 4px;
-        }
-
-        .bot-badge {
-            background: #3b82f6;
-            color: #fff;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 6px;
-        }
-
-        .bot-title-text {
-            font-size: 11px;
-            color: var(--primary-blue);
-            font-weight: 800;
-        }
-
-        .wa-message-bubble {
+        .custom-card {
             background: #ffffff;
-            padding: 14px 16px;
-            border-radius: 16px;
-            font-size: 13px;
-            color: var(--text-dark);
-            line-height: 1.6;
-            text-align: right;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid #f1f5f9;
+            border: 1px solid #e5e7eb;
         }
-
-        .user-sent-bubble {
-            background: #2563eb !important;
-            color: #ffffff !important;
-            align-self: flex-end !important;
-            border-radius: 16px 16px 0 16px !important;
-            max-width: 85%;
-        }
-
-        .user-sent-bubble .wa-message-time {
-            color: rgba(255, 255, 255, 0.8) !important;
-        }
-
-        .bot-options-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 6px;
-            width: 100%;
-        }
-
-        .bot-option-btn {
-            background: #dbeafe;
-            color: #1e40af;
-            border: none;
-            padding: 12px 16px;
-            border-radius: 14px;
-            font-size: 13px;
-            font-weight: 800;
-            cursor: pointer;
+        /* Floating WhatsApp Button Animation */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
             text-align: center;
-            transition: all 0.2s ease;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            width: 60px;
+            height: 60px;
+            transition: all 0.3s ease-in-out;
         }
-
-        .bot-option-btn:hover {
-            background: #bfdbfe;
-            transform: translateY(-1px);
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
-
-        .bot-option-btn:active {
-            transform: scale(0.98);
-        }
-
-        .wa-message-time {
-            font-size: 9.5px;
-            color: var(--text-muted);
-            float: left;
-            margin-top: 6px;
-        }
-
-        /* أنيميشن النقاط الثنائية والثلاثية للكتابة المباشرة */
-        .typing-dots {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 4px 8px;
-        }
-        .typing-dots span {
-            width: 6px;
-            height: 6px;
-            background-color: var(--primary-blue);
-            border-radius: 50%;
-            animation: typingBounce 1.4s infinite ease-in-out both;
-        }
-        .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes typingBounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
-
-        .wa-chat-footer-wrapper {
-            background: #ffffff;
-            padding: 12px;
+        /* Scroll to Top Button */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #ef4444;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+            z-index: 100;
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .image-preview-bar {
-            display: none;
             align-items: center;
-            gap: 10px;
-            background: #f8fafc;
-            padding: 6px 12px;
-            border-radius: 12px;
-            border: 1px solid #cbd5e1;
-            width: fit-content;
-        }
-
-        .image-preview-bar img {
+            justify-content: center;
             width: 45px;
             height: 45px;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .image-preview-bar .remove-img-btn {
-            background: #ef4444;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 11px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .wa-input-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: #f1f5f9;
-            border-radius: 25px;
-            padding: 4px 14px;
-            flex: 1;
-        }
-
-        .wa-chat-input {
-            flex: 1;
-            background: transparent;
             border: none;
-            padding: 8px 0;
-            font-size: 13px;
-            outline: none;
-            color: var(--text-dark);
-            -webkit-user-select: text;
-            user-select: text;
         }
-
-        .wa-attach-btn {
-            background: none;
-            border: none;
-            color: #64748b;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
+        .scroll-top-btn.show {
+            opacity: 1;
+            visibility: visible;
         }
-
-        .wa-attach-btn:hover {
-            color: var(--primary-blue);
+        .scroll-top-btn:hover {
+            transform: scale(1.1);
+            background-color: #dc2626;
         }
-
-        .wa-action-btn {
-            background: var(--primary-blue);
-            color: #ffffff;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            flex-shrink: 0;
-            transition: 0.2s;
-        }
-
-        .wa-action-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: #ffffff;
-        }
-
-        /* شريط التنقل السفلي */
-        .app-bottom-nav {
+        /* Loading Screen Style */
+        #loader {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 66px;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(15px);
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 90;
-            padding: 0 10px 10px 10px;
-            box-shadow: 0 -4px 15px rgba(0,0,0,0.03);
-        }
-
-        .nav-item {
+            inset: 0;
+            background-color: #ffffff;
+            z-index: 9999;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 3px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 10px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
-
-        .nav-item.active, .nav-item:hover {
-            color: var(--primary-blue);
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #e5e7eb;
+            border-top: 5px solid #2563eb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
-
-        .nav-item svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-
-        .page-section {
-            display: none;
+        /* Smooth Infinite Slider Container */
+        .slider-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            touch-action: pan-y;
         }
-
-        .page-section.active {
-            display: block;
+        .slider-track {
+            display: flex;
+            width: max-content;
+            gap: 16px;
+            will-change: transform;
         }
-
-        .footer-credits {
-            text-align: center;
-            padding: 20px 0 10px 0;
-            font-size: 9.5px;
-            color: var(--text-muted);
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            font-family: 'Poppins', sans-serif;
-            text-transform: uppercase;
+        /* Mobile Menu Overlay Styles */
+        #mobileMenu {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        #mobileMenu.active {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
-<body oncontextmenu="return false;" onkeydown="if(event.keyCode==123 || (event.ctrlKey && event.shiftKey && (event.keyCode==73 || event.keyCode==74)) || (event.ctrlKey && event.keyCode==85)) return false;">
+<body class="min-h-screen flex flex-col justify-between">
 
-    <!-- تنبيه الخطأ المخصص -->
-    <div id="customAlert">
-        <div style="background: rgba(255,255,255,0.2); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-            <i class="fa-solid fa-triangle-exclamation" style="font-size: 13px; color: #fff;"></i>
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-4">
+            BETSHAHN<span class="text-xs text-orange-500 font-normal ml-1">.COM</span>
         </div>
-        <span id="alertMessage" style="flex: 1; line-height: 1.4;">عافاك أدخل ID الحساب ديالك أولاً!</span>
+        <div class="spinner mb-4"></div>
+        <p class="text-sm font-bold text-gray-500 animate-pulse">جاري تحميل المنصة...</p>
     </div>
 
-<div class="app-container">
-    
-    <!-- الهيدر الاحترافي -->
-    <div class="pro-hero-header">
-        <div class="store-top-bar">
-            <div class="store-brand-group">
-                <div class="hero-avatar-wrapper">
-                    <img src="https://i.ibb.co/C3vFLtmS/DE11-B109-FCD2-4163-80-FD-4-DB8-EA7-D21-F9.png" alt="BETSHAHN">
-                </div>
-                <div class="hero-title-area">
-                    <h1 class="hero-title">BETSHAHN</h1>
-                    <svg class="hero-verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                </div>
-            </div>
-            <div class="hero-subtitle-badge">الوكيل المعتمد</div>
-        </div>
-    </div>
-
-    <div class="app-scroll">
-        
-        <!-- الصفحة الرئيسية -->
-        <div id="home-page" class="page-section active">
-            
-            <div class="section-title">
-                اختر منصة المراهنة
-                <span>فوري وآمن 100%</span>
-            </div>
-
-            <!-- شبكة المنصات -->
-            <div class="platform-grid">
-                <label class="platform-item"><input type="radio" name="p" value="MELBET"><div class="icon-box"><img src="https://i.ibb.co/WvKMJbWJ/melbet.jpg"></div><span class="platform-name">MELBET</span></label>
-                <label class="platform-item"><input type="radio" name="p" value="LINEBET"><div class="icon-box"><img src="https://i.ibb.co/NgSh4CLv/linebet.jpg"></div><span class="platform-name">LINEBET</span></label>
-                <label class="platform-item"><input type="radio" name="p" value="1XBET"><div class="icon-box"><img src="https://i.ibb.co/0ys1jdH3/1xbet.jpg"></div><span class="platform-name">1XBET</span></label>
-                <label class="platform-item"><input type="radio" name="p" value="BETWINNER"><div class="icon-box"><img src="https://i.ibb.co/N2Gky5ch/betwinner.jpg"></div><span class="platform-name">BETWINNER</span></label>
-                <label class="platform-item"><input type="radio" name="p" value="GOOOBET"><div class="icon-box"><img src="https://i.ibb.co/jZZdp5tv/goobet.jpg"></div><span class="platform-name">GOOOBET</span></label>
-                <label class="platform-item"><input type="radio" name="p" value="MEGAPARI"><div class="icon-box"><img src="https://i.ibb.co/3mMdfKvw/megapari.jpg"></div><span class="platform-name">MEGAPARI</span></label>
-            </div>
-            
-            <div class="id-input-wrapper">
-                <input type="number" class="id-input" id="accountId" placeholder="أدخل معرّف الحساب الخاص بك (ID)" oninput="if(this.value.length > 15) this.value = this.value.slice(0, 15);">
-            </div>
-
-            <button class="btn-continue" id="masterBtn">
-                <i class="fa-solid fa-bolt"></i>
-                <span>متابعة الشحن المباشر</span>
+    <!-- Header / Navbar -->
+    <header class="w-full bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menuBtn" class="text-gray-700 text-xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
             </button>
-
-            <!-- البطاقة المخصصة للتواصل -->
-            <div class="info-card-premium" onclick="switchPage('support')" style="cursor: pointer;">
-                <div class="info-card-icon"><i class="fa-solid fa-headset"></i></div>
-                <div class="info-content">
-                    <h5>دعم مباشر لحل أي مشكلة ف أقل من 24 ساعة</h5>
-                    <p>إذا قمت بعملية إيداع ولم تصلك الأموال إلى حسابك الشخصي خلال 3 ساعات، الرجاء التواصل مع خدمة العملاء علا أيقونة "الدعم والتواصل"</p>
-                </div>
-            </div>
-
-            <!-- معلومات الأمان -->
-            <div class="section-label-blue">
-                <i class="fa-solid fa-shield-halved"></i>
-                <span>ضمان ومميزات منصة BetShahn</span>
-            </div>
-
-            <div class="info-card-premium">
-                <div class="info-card-icon"><i class="fa-solid fa-bolt"></i></div>
-                <div class="info-content">
-                    <h5>تنفيذ فوري في 30 ثانية</h5>
-                    <p>يتم شحن حسابك تلقائياً وبسرعة فائقة فور تأكيد عملية الدفع.</p>
-                </div>
-            </div>
-
-            <div class="info-card-premium">
-                <div class="info-card-icon"><i class="fa-solid fa-lock"></i></div>
-                <div class="info-content">
-                    <h5>خصوصية وأمان تام</h5>
-                    <p>نحتاج فقط ID الحساب الخاص بك بدون أي معلومات شخصية أو سرية.</p>
-                </div>
-            </div>
-
-            <div class="footer-credits">
-                BETSHAHN © 2026 | OFFICIAL VERIFIED AGENCY PLATFORM
+            <!-- Logo Name -->
+            <div class="text-xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                BETSHAHN<span class="text-xs text-orange-500 font-normal ml-1">.COM</span>
             </div>
         </div>
+    </header>
 
-        <!-- صفحة الطرق والخدمات -->
-        <div id="services-page" class="page-section">
-            <div style="margin-bottom: 16px;">
-                <h3 style="font-size: 16px; font-weight: 800; color: var(--text-dark);">وسائل الدفع المقبولة</h3>
-                <p style="font-size: 11px; color: var(--text-muted);">توفر منصة BetShahn جميع وسائل الدفع المحلية الفورية:</p>
-            </div>
-
-            <div class="info-card-premium">
-                <div class="info-card-icon"><i class="fa-solid fa-building-columns"></i></div>
-                <div class="info-content">
-                    <h5>جميع البنوك المغربية</h5>
-                    <p>CIH Bank, Attijariwafa, BMCE, Credit Agricole, Banque Populaire.</p>
-                </div>
-            </div>
-
-            <div class="info-card-premium">
-                <div class="info-card-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
-                <div class="info-content">
-                    <h5>وكالات التحويل السريع</h5>
-                    <p>Cash Plus, Wafacash, Barid Cash بكل سهولة.</p>
-                </div>
-            </div>
-
-            <div class="info-card-premium">
-                <div class="info-card-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                <div class="info-content">
-                    <h5>تعبئة الهاتف الفورية</h5>
-                    <p>تعبئة Inwi و Orange متاحة للشحن المباشر السريع.</p>
-                </div>
-            </div>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu">
+        <button id="closeMenuBtn" class="absolute top-6 left-6 text-white text-3xl focus:outline-none">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="flex flex-col items-center space-y-6 text-right">
+            <a href="#" class="mobile-link text-white text-xl font-bold hover:text-amber-300 transition">الرئيسية</a>
+            <a href="deposit.html" class="mobile-link text-white text-xl font-bold hover:text-amber-300 transition">الشحن</a>
+            <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="mobile-link text-white text-xl font-bold hover:text-amber-300 transition">السحب</a>
+            <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="mobile-link text-white text-xl font-bold hover:text-amber-300 transition">شرح طريقة السحب الفيديو</a>
+            <a href="#" id="contactLink" class="mobile-link text-white text-xl font-bold hover:text-amber-300 transition">اتصل بنا</a>
         </div>
-
-        <!-- صفحة الدعم والتواصل -->
-        <div id="support-page" class="page-section">
-            
-            <div id="support-list-view">
-                <div style="margin-bottom: 12px; text-align: right;">
-                    <h3 style="font-size: 16px; font-weight: 800; color: var(--text-dark);">مركز المساعدة والدعم المباشر</h3>
-                    <p style="font-size: 11.5px; color: var(--text-muted);">نحن هنا لمساعدتك على مدار 24 ساعة في حل أي مشكلة</p>
-                </div>
-
-                <div class="support-card-custom" onclick="openSupportChat()">
-                    <div class="support-info-text">
-                        <h3>الدعم</h3>
-                        <p>تواصل معنا وسنساعدك</p>
-                    </div>
-                    <div class="support-headset-icon">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div id="support-chat-container" style="display: none;">
-                <div style="margin-bottom: 10px;">
-                    <button style="background: var(--card-bg); color: var(--text-dark); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 10px; font-size: 11px; font-weight: 800; cursor: pointer;" onclick="closeSupportChat()">
-                        ← العودة للصفحة
-                    </button>
-                </div>
-
-                <div class="whatsapp-chat-box">
-                    <div class="wa-chat-header" id="chatHeaderBar">
-                        <div style="font-size: 18px; font-weight: bold; cursor: pointer;" onclick="closeSupportChat()">←</div>
-                        <div class="wa-ch-user-info" style="display: flex; align-items: center; gap: 8px;">
-                            <div style="text-align: right; color: #fff;">
-                                <h4 id="chatAgentName" style="font-size: 13.5px; margin:0;">مساعد الدعم الفني</h4>
-                                <span id="chatAgentStatus" style="font-size: 10px; opacity: 0.85;">متصل الآن • رد فوري</span>
-                            </div>
-                            <img id="chatAgentAvatar" src="https://i.ibb.co/C3vFLtmS/DE11-B109-FCD2-4163-80-FD-4-DB8-EA7-D21-F9.png" alt="BetShahn" style="width: 34px; height: 34px; border-radius: 50%; object-fit: cover;">
-                        </div>
-                    </div>
-
-                    <div class="wa-chat-body" id="waChatBody">
-                        <div class="bot-message-container" id="initialBotMsg">
-                            <div class="bot-tag-header">
-                                <span class="bot-badge" id="botBadgeLabel">BOT</span>
-                                <span class="bot-title-text" id="botTitleLabel">المساعد الآلي</span>
-                            </div>
-                            <div class="wa-message-bubble">
-                                مرحباً بك في مركز دعم منصة BetShahn! ⚡<br>
-                                نحن على علم بجميع استفسارات الشحن والسحب ونعمل على خدمتكم فوراً.<br><br>
-                                <b>شكراً على صبركم وتفهمكم! 😊</b><br>
-                                إذا كان لديك استفسار، اختر أحد المواضيع أدناه أو اكتب مشكلتك مباشرة:
-                                
-                                <div class="bot-options-grid" id="botOptionsGrid">
-                                    <button class="bot-option-btn" onclick="selectBotOption('التحقق من حالة الشحن 💰')">التحقق من الشحن 💰</button>
-                                    <button class="bot-option-btn" onclick="selectBotOption('حل مشكلة * في كاش بليس 🔄')">حل مشكلة * في كاش بليس 🔄</button>
-                                    <button class="bot-option-btn" onclick="selectBotOption('كيفية شحن الحساب خطوة بخطوة ⚡')">كيفية شحن الحساب خطوة بخطوة ⚡</button>
-                                    <button class="bot-option-btn" onclick="selectBotOption('التحدث مباشرة مع العميل 🎧')">التحدث مع العميل 🎧</button>
-                                </div>
-                                <span class="wa-message-time">الآن</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="wa-chat-footer-wrapper">
-                        <div class="image-preview-bar" id="imagePreviewBar">
-                            <img id="previewImg" src="" alt="preview">
-                            <button class="remove-img-btn" onclick="removeSelectedImage()">✕</button>
-                        </div>
-
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <div class="wa-input-container">
-                                <input type="text" id="waMsgInput" class="wa-chat-input" placeholder="اكتب رسالتك أو اختر موضوعاً..." onkeydown="if(event.key==='Enter') handleAction()">
-                                <button class="wa-attach-btn" onclick="triggerFileInput()" title="إرفاق سكرين شوت">
-                                    <i class="fa-solid fa-paperclip"></i>
-                                </button>
-                                <input type="file" id="imageFileInput" accept="image/*" style="display: none;" onchange="handleImageSelect(event)">
-                            </div>
-
-                            <button id="sendActionBtn" onclick="handleAction()" class="wa-action-btn" title="إرسال">
-                                <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
     </div>
 
-    <!-- شريط التنقل السفلي -->
-    <div class="app-bottom-nav">
-        <a onclick="switchPage('home')" id="nav-home" class="nav-item active">
-            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-            <span>الرئيسية</span>
-        </a>
-        <a onclick="switchPage('services')" id="nav-services" class="nav-item">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
-            <span>طرق الدفع</span>
-        </a>
-        <a onclick="switchPage('support')" id="nav-support" class="nav-item">
-            <svg viewBox="0 0 24 24"><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/></svg>
-            <span>الدعم والتواصل</span>
-        </a>
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 bg-black/60 z-[1100] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center relative transform scale-95 transition-transform duration-300" id="modalContent">
+            <button id="closeModalBtn" class="absolute top-4 left-4 text-gray-400 hover:text-gray-600 text-xl focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+            <h3 class="text-xl font-black text-gray-800 mb-2">اتصل بنا</h3>
+            <p class="text-sm text-gray-500 mb-6">تواصل معنا عبر وسائل الاتصال الخاصة الرسمية:</p>
+            <div class="space-y-3">
+                <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="flex items-center justify-center gap-2 bg-emerald-50 text-emerald-700 font-bold py-3 px-4 rounded-xl border border-emerald-200 hover:bg-emerald-100 transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>+212 718-192772</span>
+                </a>
+                <a href="mailto:Contact@betshahn.com" class="flex items-center justify-center gap-2 bg-blue-50 text-blue-700 font-bold py-3 px-4 rounded-xl border border-blue-200 hover:bg-blue-100 transition">
+                    <i class="fa-solid fa-envelope text-lg"></i>
+                    <span>Contact@betshahn.com</span>
+                </a>
+            </div>
+        </div>
     </div>
 
-</div>
+    <!-- Main Content Container -->
+    <main class="w-full max-w-4xl mx-auto px-4 py-6 flex-grow space-y-6">
 
-<script>
-    var _0x2b3c = [
-        'https://script.google.com/macros/s/AKfycbzKorbTY08JbOg5oEn5Zsvr_OtPARAFMVIqEPpti8ojmIst0_Sb8KpBb7Go6hf-2N8/exec',
-        'show',
-        'accountId',
-        'w/index.html',
-        'add',
-        'error-border',
-        'click',
-        'masterBtn'
-    ];
-    
-    var _0x0a1b = function(_0x2c3b, _0x1b0a) {
-        _0x2c3b = _0x2c3b - 0x0;
-        var _0x5d2e = _0x2b3c[_0x2c3b];
-        return _0x5d2e;
-    };
+        <!-- Hero Banner Section -->
+        <section class="hero-gradient rounded-3xl p-6 text-center shadow-xl relative overflow-hidden text-white">
+            <!-- Decorative Glow Elements -->
+            <div class="absolute -top-12 -right-12 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-blue-400/20 rounded-full blur-3xl"></div>
 
-    function _tErr(_0x4d2a) {
-        const _0x1a2b = document.getElementById('customAlert');
-        const _0x3b2c = document.getElementById('accountId');
-        document.getElementById('alertMessage').innerText = _0x4d2a;
-        _0x1a2b.classList.add('show');
-        if (_0x3b2c) _0x3b2c.classList.add('error-border');
-        setTimeout(() => {
-            _0x1a2b.classList.remove('show');
-            if (_0x3b2c) _0x3b2c.classList.remove('error-border');
-        }, 3200);
-    }
+            <div class="relative z-10">
+                <span class="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3 shadow-md animate-pulse">
+                    حصري و جديد
+                </span>
+                <h1 class="text-xl md:text-2xl font-black leading-relaxed mb-4 text-white">
+                    جائزة و هدايا كل شهر مع منصة <span class="text-amber-300">BetShahn</span> استمتع بأسرع خدمة شحن وسحب
+                </h1>
 
-    document.getElementById('masterBtn').addEventListener('click', function() {
-        const _0x1f2e = document.getElementById('accountId').value;
-        const checkedPlatform = document.querySelector('input[name="p"]:checked');
-        
-        if (_0x1f2e.trim() === "") {
-            _tErr("عافاك أدخل ID الحساب ديالك أولاً!");
-            return;
-        }
-        
-        if (!checkedPlatform) {
-            _tErr("عافاك اختر منصة المراهنة أولاً!");
-            return;
-        }
+                <!-- Action Buttons Grid -->
+                <div class="grid grid-cols-3 gap-2 mt-6">
+                    <a href="deposit.html" class="bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-500 hover:to-green-600 text-white font-bold py-3 px-2 rounded-xl text-xs md:text-sm shadow-md transition transform hover:-translate-y-0.5 text-center flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-bolt mb-1 text-base"></i>
+                        الشحن
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-bold py-3 px-2 rounded-xl text-xs md:text-sm shadow-md transition transform hover:-translate-y-0.5 text-center flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-wallet mb-1 text-base"></i>
+                        السحب
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-slate-950 font-black py-3 px-1 rounded-xl text-[11px] md:text-xs shadow-md transition transform hover:-translate-y-0.5 text-center flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-gift mb-1 text-base"></i>
+                        الشحن عبر أينوي و اورونج
+                    </a>
+                </div>
 
-        const _0x5d4c = checkedPlatform.value;
-        localStorage.setItem('user_id', _0x1f2e);
-        localStorage.setItem('platform_name', _0x5d4c);
-        
-        const _0x4a3b = new URLSearchParams();
-        _0x4a3b.append('id', _0x1f2e);
-        _0x4a3b.append('platform', _0x5d4c);
-        _0x4a3b.append('comment', 'طلب شحن جديد');
-        
-        fetch(_0x0a1b('0x0'), { method: 'POST', mode: 'no-cors', body: _0x4a3b.toString() });
-        window.location.href = _0x0a1b('0x3');
-    });
+                <!-- Feature Badge Showcase -->
+                <div class="mt-8 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-inner">
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-blue-900/60 border border-blue-400/30 text-xs px-3 py-1 rounded-lg font-semibold text-white">1XBET</span>
+                        <span class="bg-blue-900/60 border border-blue-400/30 text-xs px-3 py-1 rounded-lg font-semibold text-amber-300">BETWINNER</span>
+                        <span class="bg-blue-900/60 border border-blue-400/30 text-xs px-3 py-1 rounded-lg font-semibold text-white">LINEBET</span>
+                        <span class="bg-blue-900/60 border border-blue-400/30 text-xs px-3 py-1 rounded-lg font-semibold text-amber-300">MELBET</span>
+                    </div>
 
-    function switchPage(page) {
-        const homePage = document.getElementById('home-page');
-        const servicesPage = document.getElementById('services-page');
-        const supportPage = document.getElementById('support-page');
-        
-        const navHome = document.getElementById('nav-home');
-        const navServices = document.getElementById('nav-services');
-        const navSupport = document.getElementById('nav-support');
+                    <div class="text-lg font-black tracking-wider text-amber-300 mb-2">
+                        BETSHAHN.COM
+                    </div>
 
-        homePage.classList.remove('active');
-        servicesPage.classList.remove('active');
-        supportPage.classList.remove('active');
-        
-        navHome.classList.remove('active');
-        navServices.classList.remove('active');
-        navSupport.classList.remove('active');
+                    <p class="text-sm font-bold text-gray-100">
+                        واشحن حسابك في <span class="text-emerald-300 font-black">30 ثانية</span> بكل أمان وسرعة
+                    </p>
 
-        if (page === 'home') {
-            homePage.classList.add('active');
-            navHome.classList.add('active');
-        } else if (page === 'services') {
-            servicesPage.classList.add('active');
-            navServices.classList.add('active');
-        } else if (page === 'support') {
-            supportPage.classList.add('active');
-            navSupport.classList.add('active');
-        }
-    }
-
-    function openSupportChat() {
-        document.getElementById('support-list-view').style.display = 'none';
-        document.getElementById('support-chat-container').style.display = 'block';
-    }
-
-    function closeSupportChat() {
-        document.getElementById('support-chat-container').style.display = 'none';
-        document.getElementById('support-list-view').style.display = 'block';
-    }
-
-    let selectedImageBase64 = null;
-
-    function triggerFileInput() {
-        document.getElementById('imageFileInput').click();
-    }
-
-    function handleImageSelect(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                selectedImageBase64 = e.target.result;
-                document.getElementById('previewImg').src = selectedImageBase64;
-                document.getElementById('imagePreviewBar').style.display = 'flex';
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-
-    function removeSelectedImage() {
-        selectedImageBase64 = null;
-        document.getElementById('imageFileInput').value = '';
-        document.getElementById('imagePreviewBar').style.display = 'none';
-    }
-
-    let humanMode = false; 
-    let initialGreetingSent = false; 
-    let generatedTrackingCode = null; 
-    let supportFinished = false; 
-
-    function selectBotOption(optionText) {
-        sendSupportMessage(optionText, null);
-    }
-
-    function handleAction() {
-        const input = document.getElementById('waMsgInput');
-        const text = input.value.trim();
-        
-        if (text !== "" || selectedImageBase64 !== null) {
-            sendSupportMessage(text, selectedImageBase64);
-        }
-    }
-
-    function sendSupportMessage(text, imageSrc) {
-        const chatBody = document.getElementById('waChatBody');
-        const userBubble = document.createElement('div');
-        userBubble.className = 'wa-message-bubble user-sent-bubble';
-        
-        let contentHtml = '';
-        if (imageSrc) {
-            contentHtml += `<img src="${imageSrc}" style="max-width: 100%; max-height: 180px; border-radius: 10px; margin-bottom: 6px; display: block;">`;
-        }
-        if (text) {
-            contentHtml += `<div>${text}</div>`;
-        }
-        contentHtml += `<span class="wa-message-time">الآن</span>`;
-        
-        userBubble.innerHTML = contentHtml;
-        chatBody.appendChild(userBubble);
-        
-        document.getElementById('waMsgInput').value = "";
-        removeSelectedImage();
-        chatBody.scrollTop = chatBody.scrollHeight;
-
-        if (supportFinished) {
-            return;
-        }
-
-        const isTenDigitsId = /^\d{5,}$/.test(text.trim());
-        const hasImage = imageSrc !== null;
-        const isAgentRequest = text.includes('التحدث مع العميل') || text.includes('التحدث مباشرة مع العميل');
-        const isCashPlusProblem = text.includes('حل مشكلة * في كاش بليس') || text.includes('Cash Plus');
-
-        if (isTenDigitsId || hasImage || isAgentRequest) {
-            humanMode = true;
-            document.getElementById('chatAgentName').innerText = "Hamza";
-            document.getElementById('chatAgentStatus').innerText = "يكتب الآن..."; // إظهار التفاعل المباشر
-            document.getElementById('chatAgentAvatar').src = "https://i.ibb.co/C3vFLtmS/DE11-B109-FCD2-4163-80-FD-4-DB8-EA7-D21-F9.png";
-        }
-
-        // إظهار انيميشن الكتابة الفوري الحقيقي ✍️
-        const typingContainer = document.createElement('div');
-        typingContainer.className = 'bot-message-container';
-        typingContainer.id = 'tempTypingBubble';
-        
-        let badgeLabel = humanMode ? "AGENT" : "BOT";
-        let titleLabel = humanMode ? "Hamza" : "المساعد الآلي";
-
-        typingContainer.innerHTML = `
-            <div class="bot-tag-header">
-                <span class="bot-badge" style="background: #059669;">${badgeLabel}</span>
-                <span class="bot-title-text">${titleLabel}</span>
-            </div>
-            <div class="wa-message-bubble" style="padding: 10px 14px;">
-                <div class="typing-dots">
-                    <span></span><span></span><span></span>
+                    <!-- User Provided Images Grid (Clickable to WhatsApp) -->
+                    <div class="grid grid-cols-2 gap-3 mt-4">
+                        <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="overflow-hidden rounded-xl border border-white/20 shadow-md bg-white/5 block hover:scale-105 transition duration-300">
+                            <img src="https://i.ibb.co/cXhwRBqV/IMG-8093.png" alt="BetShahn Feature 1" class="w-full h-auto object-cover">
+                        </a>
+                        <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="overflow-hidden rounded-xl border border-white/20 shadow-md bg-white/5 block hover:scale-105 transition duration-300">
+                            <img src="https://i.ibb.co/ZRq3szBt/IMG-8094.png" alt="BetShahn Feature 2" class="w-full h-auto object-cover">
+                        </a>
+                        <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="overflow-hidden rounded-xl border border-white/20 shadow-md bg-white/5 block hover:scale-105 transition duration-300">
+                            <img src="https://i.ibb.co/m5qTBBGy/IMG-8095.jpg" alt="BetShahn Feature 3" class="w-full h-auto object-cover">
+                        </a>
+                        <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="overflow-hidden rounded-xl border border-white/20 shadow-md bg-white/5 block hover:scale-105 transition duration-300">
+                            <img src="https://i.ibb.co/KjBd6wxh/IMG-8096.png" alt="BetShahn Feature 4" class="w-full h-auto object-cover">
+                        </a>
+                    </div>
                 </div>
             </div>
-        `;
-        chatBody.appendChild(typingContainer);
-        chatBody.scrollTop = chatBody.scrollHeight;
+        </section>
 
-        setTimeout(() => {
-            // إزالة انيميشن الكتابة وإرجاع حالة العميل للمتصل
-            const tempBubble = document.getElementById('tempTypingBubble');
-            if (tempBubble) tempBubble.remove();
+        <!-- Payment Methods & Banks Auto-Scrolling with Pause on Touch Slider -->
+        <section class="custom-card rounded-3xl p-6 shadow-md overflow-hidden">
+            <h2 class="text-base md:text-lg font-bold text-center mb-6 text-gray-800 leading-relaxed">
+                اختر طريقة الدفع الخاصة بك وقم بتعبئة حساب 1XBET أو MELBET الخاص بك بسرعة وسهولة مع الوكيل المعتمد <span class="text-blue-600 font-black">BETSHAHN</span>
+            </h2>
 
-            if (humanMode) {
-                document.getElementById('chatAgentStatus').innerText = "متصل الآن • خدمة العملاء";
+            <!-- Auto-Scrolling Slider with Touch/Hold to Pause -->
+            <div class="slider-container mb-2 py-3" id="autoSlider">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Original Set of 7 New Images -->
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/qYcqmv4S/IMG-8117.jpg" alt="IMG 8117" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/BKzJBnVR/IMG-8116.jpg" alt="IMG-8116" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/Nd4PXmhD/IMG-8118.jpg" alt="IMG 8118" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/v4tCxtPP/IMG-8120.jpg" alt="IMG 8120" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/6RT2tQBT/IMG-8124.jpg" alt="IMG-8124" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/ymWWZLwv/IMG-8123.jpg" alt="IMG 8123" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/MxcB0frg/IMG-8122.jpg" alt="IMG 8122" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+
+                    <!-- Duplicate Set for Seamless Infinite Loop -->
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/qYcqmv4S/IMG-8117.jpg" alt="IMG 8117" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/BKzJBnVR/IMG-8116.jpg" alt="IMG-8116" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/Nd4PXmhD/IMG-8118.jpg" alt="IMG 8118" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/v4tCxtPP/IMG-8120.jpg" alt="IMG 8120" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/6RT2tQBT/IMG-8124.jpg" alt="IMG-8124" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/ymWWZLwv/IMG-8123.jpg" alt="IMG 8123" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                    <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="w-32 h-16 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center p-2 flex-shrink-0 hover:border-emerald-500 transition">
+                        <img src="https://i.ibb.co/MxcB0frg/IMG-8122.jpg" alt="IMG 8122" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <div id="contact" class="text-center py-4">
+            <a href="https://wa.me/+212718192772?text=slm" target="_blank" class="inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-8 rounded-2xl shadow-lg transition transform hover:scale-105 text-base">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                <span>تواصل معنا عبر واتساب للشحن الفوري</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Floating WhatsApp Button (Left side) -->
+    <a href="https://wa.me/+212718192772?text=slm" class="whatsapp-float" target="_blank" aria-label="تواصل عبر الواتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Scroll to Top Button (Right side, appears on scroll) -->
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="الرجوع إلى أعلى الصفحة">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="w-full bg-white border-t border-gray-200 py-4 mt-8">
+        <div class="max-w-4xl mx-auto px-4 flex justify-between items-center text-xs text-gray-500">
+            <span>© 2026 BetShahn. كل الحقوق محفوظة</span>
+        </div>
+    </footer>
+
+    <!-- JavaScript to hide loader, run smooth infinite scroll, and control scroll-to-top button -->
+    <script>
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+            }, 600);
+
+            // Infinite Scroll Logic with Pause on Touch / Mouse Enter
+            const track = document.getElementById('sliderTrack');
+            let scrollPos = 0;
+            let isPaused = false;
+            const speed = 0.8;
+
+            function step() {
+                if (!isPaused) {
+                    scrollPos += speed;
+                    const halfWidth = track.scrollWidth / 2;
+                    if (scrollPos >= halfWidth) {
+                        scrollPos = 0;
+                    }
+                    track.style.transform = `translateX(${scrollPos}px)`;
+                }
+                requestAnimationFrame(step);
             }
 
-            const botContainer = document.createElement('div');
-            botContainer.className = 'bot-message-container';
+            const sliderContainer = document.getElementById('autoSlider');
             
-            let replyText = "";
-            let badgeText = "BOT";
-            let titleText = "المساعد الآلي";
+            sliderContainer.addEventListener('mouseenter', () => { isPaused = true; });
+            sliderContainer.addEventListener('mouseleave', () => { isPaused = false; });
+            
+            sliderContainer.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
+            sliderContainer.addEventListener('touchend', () => { isPaused = false; });
 
-            if (isCashPlusProblem) {
-                replyText = `<img src="https://i.ibb.co/DBq2SP1/IMG-1810.jpg" alt="حل مشكلة علامة النجمة في كاش بليس" style="max-width:100%; border-radius:12px; margin-bottom:10px; display:block;"><br>` +
-                            `⚠️ **حل مشكلة علامة (*) في كاش بليس:**<br>` +
-                            `إذا ظهرت لك علامة (*) كما في الصورة أعلاه ورجعت لك الأموال، فهذا يعني أن التحويل لم يتم بنجاح.<br><br>` +
-                            `💡 **الحل:** يجب عليك إعادة إرسال الأموال من جديد، ولكن قبل إرسالها قم بإعادة تحديث الصفحة (Refresh) لكي يتغير رقم الوكيل الجديد، ثم أرسل الأموال لتتم العملية بدون أي مشاكل!`;
-                supportFinished = true; 
-            } else if (humanMode) {
-                badgeText = "AGENT";
-                titleText = "Hamza";
+            requestAnimationFrame(step);
+        });
 
-                if (!generatedTrackingCode) {
-                    generatedTrackingCode = 'BS-' + Math.floor(100000 + Math.random() * 900000);
-                }
+        // Scroll to Top Button Logic
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
 
-                if (isAgentRequest && !initialGreetingSent) {
-                    replyText = "مرحباً بك، أنا **Hamza** ممثل خدمة العملاء 🎧. شنو المشكل لي عندك بالضبط؟ المرجو ترك معرّف الحساب (ID) لنبدأ المعالجة.";
-                    initialGreetingSent = true;
-                } else {
-                    replyText = `مرحباً بك، تم التوصل بمعلوماتك بنجاح ⚡.<br>طلبك الآن <b>قيد المعالجة</b> من طرف الفريق التقني.<br><br>🎫 <b>كود التتبع الخاص بك (Ref):</b> <span style="background:#e0f2fe; color:#0369a1; padding:2px 6px; border-radius:4px; font-weight:bold;">${generatedTrackingCode}</span><br><br>سنقوم بحل المشكلة وتأكيد العملية في أسرع وقت (خلال 24 ساعة كحد أقصى). شكراً لصبرك! 🙏`;
-                    initialGreetingSent = true;
-                    supportFinished = true; 
-                }
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
             } else {
-                replyText = "تم التوصل بطلبك بنجاح! ⚡ المرجو إرسال ID الحساب أو إرفاق سكرين شوت للعملية.";
-                
-                if (text.includes('كيفية شحن الحساب')) {
-                    replyText = "خطوات الشحن بكل سهولة ⚡:<br>1️⃣ سير للصفحة الرئيسية واختار المنصة لي بغيتي تشرجي فيها.<br>2️⃣ دخل الـ ID ديال حسابك وضغط على زر **متابعة الشحن المباشر**.<br>3️⃣ غادي توجه لصفحة الدفع، اختار بنكك وكمل الدفع في أقل من 30 دقيقة ⚡!";
-                }
+                scrollTopBtn.classList.remove('show');
             }
+        });
 
-            botContainer.innerHTML = `
-                <div class="bot-tag-header">
-                    <span class="bot-badge" style="background: #059669;">${badgeText}</span>
-                    <span class="bot-title-text">${titleText}</span>
-                </div>
-                <div class="wa-message-bubble">
-                    ${replyText}
-                    <span class="wa-message-time">الآن</span>
-                </div>
-            `;
-            chatBody.appendChild(botContainer);
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }, 2200); // إظهار الانيميشن لمدة ثانيتين لتجسيد إحساس الكتابة الحقيقية
-    }
-</script>
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
+        // Mobile Menu and Contact Modal Logic
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const contactLink = document.getElementById('contactLink');
+        const contactModal = document.getElementById('contactModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modalContent = document.getElementById('modalContent');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        contactLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileMenu.classList.remove('active');
+            contactModal.classList.remove('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            contactModal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+        });
+
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.add('opacity-0', 'pointer-events-none');
+                modalContent.classList.remove('scale-100');
+                modalContent.classList.add('scale-95');
+            }
+        });
+    </script>
 </body>
 </html>
