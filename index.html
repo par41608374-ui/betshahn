@@ -137,6 +137,18 @@
             opacity: 1;
             visibility: visible;
         }
+        /* Custom Scrollbar for Orange Modal */
+        #orangeModalContent::-webkit-scrollbar {
+            width: 5px;
+        }
+        #orangeModalContent::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        #orangeModalContent::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -202,6 +214,283 @@
                     <i class="fa-solid fa-envelope text-lg"></i>
                     <span>Contact@betshahn.com</span>
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orange Recharge Modal (Enterprise Blue/Indigo Brand Theme) -->
+    <div id="orangeModal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm z-[1150] flex items-center justify-center p-3 sm:p-5 opacity-0 pointer-events-none transition-opacity duration-300 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-md w-full shadow-[0_25px_60px_-15px_rgba(30,64,175,0.35)] border border-blue-100 text-right relative transform scale-95 transition-transform duration-300 my-auto overflow-hidden" id="orangeModalContent">
+            
+            <!-- Top Brand Header Banner -->
+            <div class="hero-gradient px-6 pt-6 pb-5 text-white relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-indigo-400/20 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <button id="closeOrangeModalBtn" aria-label="إغلاق" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center text-base transition cursor-pointer backdrop-blur-md">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="inline-flex items-center gap-1.5 bg-white/15 border border-white/25 text-white font-bold text-[11px] px-3.5 py-1 rounded-full mb-2.5 backdrop-blur-md">
+                        <i class="fa-solid fa-bolt text-blue-200"></i>
+                        <span>بوابة الشحن الفوري • أورونج (Orange)</span>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-black tracking-tight text-white">تأكيد شحن أورونج</h3>
+                    <p class="text-xs text-blue-100/90 font-semibold mt-1 leading-relaxed">أرسل التعبئة المباشرة إلى الرقم، ثم أكمل البيانات بالأسفل للشحن الفوري</p>
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-4 sm:p-6 space-y-5">
+
+                <!-- Step 1: Transfer Number Card -->
+                <div class="bg-gradient-to-br from-blue-50/90 via-indigo-50/40 to-white border border-blue-200/80 rounded-2xl p-4 shadow-sm space-y-3.5">
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-blue-900">
+                            <span class="w-6 h-6 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center font-black shadow-xs flex-shrink-0">1</span>
+                            <span>أرسل التعبئة المباشرة إلى الرقم الرسمي</span>
+                        </span>
+                        <span class="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 flex-shrink-0">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                            متاح الآن
+                        </span>
+                    </div>
+
+                    <div class="bg-white border border-blue-100 rounded-xl p-3.5 flex items-center justify-between gap-3 shadow-xs">
+                        <div class="min-w-0">
+                            <div class="text-[11px] font-bold text-slate-400 mb-0.5">رقم أورونج (تعبئة مباشرة في الرقم)</div>
+                            <div id="orangeNumberText" dir="ltr" class="font-black text-slate-900 text-lg sm:text-xl tracking-wider select-all text-right">06.12.25.32.56</div>
+                        </div>
+                        <button type="button" onclick="copyOrangeNumber()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 active:scale-95 text-white font-black text-xs px-4 py-2.5 rounded-xl shadow-md shadow-blue-600/20 transition flex items-center gap-1.5 cursor-pointer flex-shrink-0">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>نسخ الرقم</span>
+                        </button>
+                    </div>
+
+                    <!-- Important Rule Box (Clean Enterprise Blue/Red Alert) -->
+                    <div class="bg-red-50/90 border border-red-200/80 text-red-800 p-3.5 rounded-xl text-xs font-bold leading-relaxed flex items-start gap-2.5">
+                        <div class="w-6 h-6 rounded-lg bg-red-100 text-red-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-triangle-exclamation text-xs"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <span class="font-black text-red-900 block">شروط مهمة قبل الإرسال:</span>
+                            <p class="leading-relaxed">• المبلغ المقبول ابتداءً من <span class="underline decoration-red-400 font-black">200dh فما فوق فقط</span> (أقل من 200 درهم غير مقبول).</p>
+                            <p class="leading-relaxed">• أرسل <span class="font-black">تعبئة عادية بدون نجمة (*)</span> ومباشرة في الرقم <span class="font-black">(وليس كارت/بطاقة)</span>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Instructions Toggle Button -->
+                    <button type="button" onclick="toggleOrangeVideo()" id="orangeVideoToggleBtn" class="w-full bg-white hover:bg-blue-50 border border-blue-200 text-blue-800 font-extrabold text-xs py-3 px-4 rounded-xl transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
+                        <i class="fa-solid fa-list-check text-blue-600 text-base"></i>
+                        <span>طريقة شحن حسابك عبر مول الحانوت (Orange)</span>
+                        <i id="orangeVideoChevron" class="fa-solid fa-chevron-down text-[10px] text-blue-500 transition-transform duration-300"></i>
+                    </button>
+
+                    <!-- Step-by-Step Instructions Container -->
+                    <div id="orangeVideoBox" class="hidden rounded-2xl overflow-hidden border border-blue-200/90 bg-gradient-to-b from-blue-50/70 via-white to-slate-50/70 shadow-md">
+                        <div class="hero-gradient px-4 py-3 text-white flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="w-7 h-7 rounded-lg bg-white/15 border border-white/25 flex items-center justify-center text-xs">
+                                    <i class="fa-solid fa-store text-blue-100"></i>
+                                </span>
+                                <div>
+                                    <h4 class="text-xs sm:text-sm font-black leading-tight text-white">طريقة شحن حسابك عبر مول الحانوت (Orange)</h4>
+                                    <p class="text-[10px] text-blue-100/90 font-semibold mt-0.5">اتبع الخطوات التالية لإتمام عملية الشحن بنجاح:</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 sm:p-4 space-y-3 text-xs text-slate-700">
+                            <!-- الخطوة 1 -->
+                            <div class="bg-white border border-blue-100 rounded-xl p-3 shadow-2xs space-y-2">
+                                <div class="flex items-center gap-2 font-black text-blue-900 text-xs">
+                                    <span class="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] flex items-center justify-center flex-shrink-0">1</span>
+                                    <span>الخطوة 1: إرسال التعبئة</span>
+                                </div>
+                                <ul class="space-y-1.5 pr-2 text-[11px] sm:text-xs font-bold text-slate-600 leading-relaxed list-disc list-inside">
+                                    <li>توجّه إلى أقرب مول حانوت إليك.</li>
+                                    <li>اطلب منه إرسال تعبئة Orange بقيمة 200 درهم أو أكثر، حسب المبلغ الذي ترغب في شحنه.</li>
+                                    <li>يجب أن تكون التعبئة من نوع Orange عادية أو Express (بدون نجمة *).</li>
+                                    <li>أرسل التعبئة مباشرة إلى الرقم التالي:</li>
+                                </ul>
+                                <div class="bg-blue-50/90 border border-blue-200/80 rounded-lg py-2 px-3 text-center">
+                                    <span dir="ltr" class="font-black text-blue-900 text-sm sm:text-base tracking-wider select-all">06.12.25.32.56</span>
+                                </div>
+                            </div>
+
+                            <!-- الخطوة 2 -->
+                            <div class="bg-white border border-blue-100 rounded-xl p-3 shadow-2xs space-y-1.5">
+                                <div class="flex items-center gap-2 font-black text-blue-900 text-xs">
+                                    <span class="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] flex items-center justify-center flex-shrink-0">2</span>
+                                    <span>الخطوة 2: تصوير رسالة التأكيد</span>
+                                </div>
+                                <ul class="space-y-1.5 pr-2 text-[11px] sm:text-xs font-bold text-slate-600 leading-relaxed list-disc list-inside">
+                                    <li>بعد إتمام التعبئة، اطلب من مول الحانوت أن يريك رسالة التأكيد التي توصل بها.</li>
+                                    <li>التقط صورة واضحة للرسالة التي تثبت إرسال التعبئة إلى الرقم المذكور.</li>
+                                </ul>
+                            </div>
+
+                            <!-- الخطوة 3 -->
+                            <div class="bg-white border border-blue-100 rounded-xl p-3 shadow-2xs space-y-1.5">
+                                <div class="flex items-center gap-2 font-black text-blue-900 text-xs">
+                                    <span class="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] flex items-center justify-center flex-shrink-0">3</span>
+                                    <span>الخطوة 3: الدخول إلى الموقع</span>
+                                </div>
+                                <ul class="space-y-1.5 pr-2 text-[11px] sm:text-xs font-bold text-slate-600 leading-relaxed list-disc list-inside">
+                                    <li>ادخل إلى موقع الشحن الخاص بنا.</li>
+                                    <li>قم بملء المعلومات المطلوبة:</li>
+                                </ul>
+                                <ul class="space-y-1 pr-6 text-[11px] font-extrabold text-slate-700 leading-relaxed list-disc list-inside">
+                                    <li>وقت إرسال التعبئة.</li>
+                                    <li>ID الخاص بحسابك.</li>
+                                    <li>اختيار المنصة.</li>
+                                    <li>اختيار العملة.</li>
+                                </ul>
+                            </div>
+
+                            <!-- الخطوة 4 -->
+                            <div class="bg-white border border-blue-100 rounded-xl p-3 shadow-2xs space-y-1.5">
+                                <div class="flex items-center gap-2 font-black text-blue-900 text-xs">
+                                    <span class="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] flex items-center justify-center flex-shrink-0">4</span>
+                                    <span>الخطوة 4: رفع صورة إثبات التعبئة</span>
+                                </div>
+                                <ul class="space-y-1.5 pr-2 text-[11px] sm:text-xs font-bold text-slate-600 leading-relaxed list-disc list-inside">
+                                    <li>انزل إلى أسفل الصفحة.</li>
+                                    <li>اضغط على خانة «اضغط هنا لرفع صورة رسالة التأكيد».</li>
+                                    <li>اختر الصورة الواضحة التي التقطتها لرسالة التأكيد الموجودة في هاتف مول الحانوت.</li>
+                                </ul>
+                            </div>
+
+                            <!-- الخطوة 5 -->
+                            <div class="bg-white border border-blue-100 rounded-xl p-3 shadow-2xs space-y-1.5">
+                                <div class="flex items-center gap-2 font-black text-blue-900 text-xs">
+                                    <span class="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] flex items-center justify-center flex-shrink-0">5</span>
+                                    <span>الخطوة 5: تأكيد عملية الشحن</span>
+                                </div>
+                                <ul class="space-y-1.5 pr-2 text-[11px] sm:text-xs font-bold text-slate-600 leading-relaxed list-disc list-inside">
+                                    <li>بعد التأكد من صحة جميع المعلومات ورفع الصورة، اضغط على زر «تأكيد عملية الشحن».</li>
+                                </ul>
+                            </div>
+
+                            <!-- رسالة النجاح -->
+                            <div class="bg-emerald-50 border border-emerald-200/90 text-emerald-800 rounded-xl p-3 text-[11px] sm:text-xs font-black leading-relaxed flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-emerald-600 text-sm mt-0.5 flex-shrink-0"></i>
+                                <span>✅ مبروك! تم إرسال طلب الشحن الخاص بك. انتظر إلى حين التحقق من عملية التعبئة وتأكيدها.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Verification Form -->
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-xs space-y-4">
+                    <div class="flex items-center gap-2 text-xs sm:text-sm font-black text-blue-900 border-b border-slate-100 pb-2.5">
+                        <span class="w-6 h-6 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center font-black shadow-xs flex-shrink-0">2</span>
+                        <span>أدخل معلومات العملية لتأكيد الشحن</span>
+                    </div>
+
+                    <form id="orangeRechargeForm" class="space-y-3.5" onsubmit="submitOrangeRecharge(event)">
+                        
+                        <!-- Row: Send Time & Account ID -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <!-- Send Time -->
+                            <div>
+                                <label for="orangeSendTime" class="flex items-center gap-1.5 text-xs font-extrabold text-slate-700 mb-1.5">
+                                    <i class="fa-regular fa-clock text-blue-600"></i>
+                                    <span>وقت إرسال التعبئة</span>
+                                </label>
+                                <input type="time" id="orangeSendTime" required class="w-full h-11 border border-slate-200 focus:border-blue-600 focus:ring-4 focus:ring-blue-600/10 rounded-xl px-3 text-sm font-bold outline-none bg-slate-50/70 focus:bg-white text-slate-800 transition">
+                            </div>
+
+                            <!-- Account ID -->
+                            <div>
+                                <label for="orangeAccountId" class="flex items-center gap-1.5 text-xs font-extrabold text-slate-700 mb-1.5">
+                                    <i class="fa-solid fa-id-card text-blue-600"></i>
+                                    <span>رقم حسابك (ID)</span>
+                                </label>
+                                <input type="text" id="orangeAccountId" required placeholder="مثال: 123456789" class="w-full h-11 border border-slate-200 focus:border-blue-600 focus:ring-4 focus:ring-blue-600/10 rounded-xl px-3 text-sm font-bold outline-none bg-slate-50/70 focus:bg-white text-slate-800 transition">
+                            </div>
+                        </div>
+
+                        <!-- Platform -->
+                        <div>
+                            <label for="orangePlatform" class="flex items-center gap-1.5 text-xs font-extrabold text-slate-700 mb-1.5">
+                                <i class="fa-solid fa-layer-group text-blue-600"></i>
+                                <span>اختر المنصة</span>
+                            </label>
+                            <div class="relative">
+                                <select id="orangePlatform" required onchange="toggleOtherPlatformInput()" class="w-full h-11 border border-slate-200 focus:border-blue-600 focus:ring-4 focus:ring-blue-600/10 rounded-xl px-3 text-sm font-bold outline-none bg-slate-50/70 focus:bg-white text-slate-800 transition appearance-none cursor-pointer">
+                                    <option value="" disabled selected>اختر المنصة الخاصة بحسابك</option>
+                                    <option value="1XBET">1XBET</option>
+                                    <option value="MELBET">MELBET</option>
+                                    <option value="BETWINNER">BETWINNER</option>
+                                    <option value="LINEBET">LINEBET</option>
+                                    <option value="أخرى">أخرى</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down text-slate-400 text-xs absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- Custom Platform Input when "أخرى" is chosen -->
+                        <div id="otherPlatformWrapper" class="hidden">
+                            <label for="orangeOtherPlatform" class="flex items-center gap-1.5 text-xs font-extrabold text-slate-700 mb-1.5">
+                                <i class="fa-solid fa-pen-to-square text-blue-600"></i>
+                                <span>اكتب اسم المنصة</span>
+                            </label>
+                            <input type="text" id="orangeOtherPlatform" placeholder="اكتب اسم المنصة الخاصة بك" class="w-full h-11 border border-slate-200 focus:border-blue-600 focus:ring-4 focus:ring-blue-600/10 rounded-xl px-3 text-sm font-bold outline-none bg-slate-50/70 focus:bg-white text-slate-800 transition">
+                        </div>
+
+                        <!-- Currency (MAD or USD) -->
+                        <div>
+                            <label class="flex items-center gap-1.5 text-xs font-extrabold text-slate-700 mb-1.5">
+                                <i class="fa-solid fa-coins text-blue-600"></i>
+                                <span>عملة الحساب</span>
+                            </label>
+                            <div class="grid grid-cols-2 gap-2.5">
+                                <label class="flex items-center justify-center gap-2 border border-slate-200 bg-slate-50/70 hover:bg-blue-50/50 rounded-xl h-11 cursor-pointer font-extrabold text-sm text-slate-700 has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50 has-[:checked]:text-blue-700 has-[:checked]:ring-2 has-[:checked]:ring-blue-600/20 transition">
+                                    <input type="radio" name="orangeCurrency" value="MAD (درهم)" required class="accent-blue-600 w-4 h-4">
+                                    <span>درهم (MAD)</span>
+                                </label>
+                                <label class="flex items-center justify-center gap-2 border border-slate-200 bg-slate-50/70 hover:bg-blue-50/50 rounded-xl h-11 cursor-pointer font-extrabold text-sm text-slate-700 has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50 has-[:checked]:text-blue-700 has-[:checked]:ring-2 has-[:checked]:ring-blue-600/20 transition">
+                                    <input type="radio" name="orangeCurrency" value="USD (دولار)" required class="accent-blue-600 w-4 h-4">
+                                    <span>دولار (USD)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Shop Phone Confirmation Message Photo Upload -->
+                        <div>
+                            <label class="flex items-center gap-1.5 text-xs font-extrabold text-slate-700 mb-1.5">
+                                <i class="fa-solid fa-mobile-screen-button text-blue-600"></i>
+                                <span>صورة رسالة التأكيد من هاتف الحانوت</span>
+                            </label>
+                            <label class="w-full border-2 border-dashed border-blue-200 hover:border-blue-500 rounded-2xl bg-blue-50/30 hover:bg-blue-50/70 p-3.5 flex items-center gap-3.5 cursor-pointer transition group">
+                                <div id="orangePlusBox" class="w-12 h-12 bg-blue-100 group-hover:bg-blue-600 text-blue-600 group-hover:text-white rounded-xl flex items-center justify-center text-lg transition flex-shrink-0">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                </div>
+                                <img id="orangeReceiptPreview" alt="صورة رسالة التأكيد من هاتف الحانوت" class="w-14 h-14 object-cover rounded-xl hidden border border-blue-200 shadow-xs flex-shrink-0">
+                                <div class="flex flex-col text-right space-y-0.5 min-w-0">
+                                    <span id="orangeFileLabel" class="text-xs font-black text-slate-800 group-hover:text-blue-700 leading-snug transition">اضغط هنا لرفع صورة رسالة التأكيد</span>
+                                    <span class="text-[11px] font-semibold text-slate-500 leading-relaxed">صورة من هاتف الحانوت تثبت إرسال التعبئة المباشرة في الرقم (وليس وصل/بطاقة)</span>
+                                </div>
+                                <input type="file" id="orangeReceiptInput" accept="image/*" required class="hidden" onchange="previewOrangeReceipt(event)">
+                            </label>
+                        </div>
+
+                        <div id="orangeStatusMsg" class="hidden text-center text-xs font-extrabold py-2.5 px-3 rounded-xl leading-relaxed"></div>
+
+                        <button type="submit" id="orangeSubmitBtn" class="w-full h-12 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-500 hover:to-indigo-600 active:scale-[0.99] text-white font-black rounded-2xl shadow-lg shadow-blue-600/25 transition cursor-pointer text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-shield-check"></i>
+                            <span>تأكيد عملية الشحن</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Trust Footer Note -->
+                <div class="pt-1 flex items-center justify-center gap-5 text-[11px] font-bold text-slate-400">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-lock text-blue-600"></i> معالجة آمنة 100%</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-bolt text-blue-600"></i> شحن سريع ومضمون</span>
+                </div>
             </div>
         </div>
     </div>
@@ -286,7 +575,7 @@
                         <i class="fa-solid fa-wallet mb-1 text-base"></i>
                         السحب
                     </a>
-                    <a href="https://wa.me/212789916241?text=slm" target="_blank" class="bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-slate-950 font-black py-3 px-1 rounded-xl text-[11px] md:text-xs shadow-md transition transform hover:-translate-y-0.5 text-center flex flex-col items-center justify-center">
+                    <a href="#orange-recharge" id="openOrangeBtn" class="bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-slate-950 font-black py-3 px-1 rounded-xl text-[11px] md:text-xs shadow-md transition transform hover:-translate-y-0.5 text-center flex flex-col items-center justify-center cursor-pointer">
                         <i class="fa-solid fa-gift mb-1 text-base"></i>
                         الشحن عبر أينوي و اورونج
                     </a>
@@ -507,6 +796,152 @@
                 modalContent.classList.add('scale-95');
             }
         });
+
+        // Orange Recharge System (ImgBB + Google Apps Script Relay)
+        const ORANGE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyBNG4GFGdi9_aE89qa3eXRksG8_B3-cBuvYolo3F6Fq6eAvqN8XJFIamURlIWMxFZf/exec";
+        const ORANGE_IMGBB_KEY = "6d2f8ab6047b7c098bb9a2383f8aed39";
+
+        const openOrangeBtn = document.getElementById('openOrangeBtn');
+        const orangeModal = document.getElementById('orangeModal');
+        const closeOrangeModalBtn = document.getElementById('closeOrangeModalBtn');
+        const orangeModalContent = document.getElementById('orangeModalContent');
+
+        function openOrangeModal(e) {
+            if (e) e.preventDefault();
+            orangeModal.classList.remove('opacity-0', 'pointer-events-none');
+            orangeModalContent.classList.remove('scale-95');
+            orangeModalContent.classList.add('scale-100');
+        }
+
+        function closeOrangeModal() {
+            orangeModal.classList.add('opacity-0', 'pointer-events-none');
+            orangeModalContent.classList.remove('scale-100');
+            orangeModalContent.classList.add('scale-95');
+        }
+
+        openOrangeBtn.addEventListener('click', openOrangeModal);
+        closeOrangeModalBtn.addEventListener('click', closeOrangeModal);
+        orangeModal.addEventListener('click', (e) => {
+            if (e.target === orangeModal) closeOrangeModal();
+        });
+
+        function toggleOrangeVideo() {
+            const box = document.getElementById('orangeVideoBox');
+            const chevron = document.getElementById('orangeVideoChevron');
+            const isHidden = box.classList.contains('hidden');
+            if (isHidden) {
+                box.classList.remove('hidden');
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
+            } else {
+                box.classList.add('hidden');
+                if (chevron) chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function toggleOtherPlatformInput() {
+            const select = document.getElementById('orangePlatform');
+            const wrapper = document.getElementById('otherPlatformWrapper');
+            const otherInput = document.getElementById('orangeOtherPlatform');
+            if (select.value === 'أخرى') {
+                wrapper.classList.remove('hidden');
+                otherInput.required = true;
+            } else {
+                wrapper.classList.add('hidden');
+                otherInput.required = false;
+                otherInput.value = '';
+            }
+        }
+
+        function copyOrangeNumber() {
+            const num = document.getElementById('orangeNumberText').innerText.trim();
+            navigator.clipboard.writeText(num);
+            const msg = document.getElementById('orangeStatusMsg');
+            msg.className = 'block text-center text-xs font-extrabold py-2.5 px-3 rounded-xl bg-blue-50 text-blue-700 border border-blue-200 leading-relaxed';
+            msg.innerText = 'تم نسخ رقم أورونج بنجاح!';
+        }
+
+        function previewOrangeReceipt(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('orangeReceiptPreview');
+            const plusBox = document.getElementById('orangePlusBox');
+            const label = document.getElementById('orangeFileLabel');
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.src = e.target.result;
+                    preview.classList.remove('hidden');
+                    plusBox.classList.add('hidden');
+                    label.innerText = file.name;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        async function submitOrangeRecharge(event) {
+            event.preventDefault();
+            const sendTime = document.getElementById('orangeSendTime').value;
+            const accountId = document.getElementById('orangeAccountId').value.trim();
+            const selectedPlatform = document.getElementById('orangePlatform').value;
+            const otherPlatformVal = document.getElementById('orangeOtherPlatform').value.trim();
+            const currencyEl = document.querySelector('input[name="orangeCurrency"]:checked');
+            const file = document.getElementById('orangeReceiptInput').files[0];
+            const statusMsg = document.getElementById('orangeStatusMsg');
+            const submitBtn = document.getElementById('orangeSubmitBtn');
+
+            const platform = selectedPlatform === 'أخرى' ? otherPlatformVal : selectedPlatform;
+
+            if (!sendTime || !accountId || !platform || !currencyEl || !file) {
+                statusMsg.className = 'block text-center text-xs font-extrabold py-2.5 px-3 rounded-xl bg-blue-50 text-blue-800 border border-blue-200 leading-relaxed';
+                statusMsg.innerText = 'المرجو ملء جميع المعلومات ورفع صورة رسالة التأكيد من هاتف الحانوت.';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>جاري الإرسال...</span>';
+
+            try {
+                const fd = new FormData();
+                fd.append('image', file);
+                const ir = await fetch(`https://api.imgbb.com/1/upload?key=${ORANGE_IMGBB_KEY}`, {
+                    method: 'POST',
+                    body: fd
+                });
+                const ij = await ir.json();
+                const receiptUrl = ij && ij.data && ij.data.url ? ij.data.url : '';
+                const currency = currencyEl.value;
+                const orangeNum = document.getElementById('orangeNumberText').innerText.trim();
+
+                await fetch(ORANGE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify({
+                        bank: 'ORANGE',
+                        orangeNumber: orangeNum,
+                        sendTime: sendTime,
+                        accountId: accountId,
+                        platform: platform,
+                        currency: currency,
+                        receiptUrl: receiptUrl
+                    })
+                });
+
+                statusMsg.className = 'block text-center text-xs font-extrabold py-2.5 px-3 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 leading-relaxed';
+                statusMsg.innerText = 'تم إرسال طلب شحن أورونج بنجاح.';
+                submitBtn.innerHTML = '<i class="fa-solid fa-check"></i><span>إرسال طلب آخر</span>';
+                submitBtn.disabled = false;
+
+                document.getElementById('orangeRechargeForm').reset();
+                document.getElementById('otherPlatformWrapper').classList.add('hidden');
+                document.getElementById('orangeReceiptPreview').classList.add('hidden');
+                document.getElementById('orangePlusBox').classList.remove('hidden');
+                document.getElementById('orangeFileLabel').innerText = 'اضغط هنا لرفع صورة رسالة التأكيد';
+            } catch (e) {
+                statusMsg.className = 'block text-center text-xs font-extrabold py-2.5 px-3 rounded-xl bg-red-50 text-red-700 border border-red-200 leading-relaxed';
+                statusMsg.innerText = 'حدث خطأ، يرجى إعادة المحاولة.';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fa-solid fa-shield-check"></i><span>تأكيد عملية الشحن</span>';
+            }
+        }
     </script>
 </body>
 </html>
